@@ -1,61 +1,58 @@
-// function Player(name, marker) {
-//     this.name = name;
-//     this.marker = marker;
-//     this.welcomeMessage = () => {
-//         console.log("hello ", this.name, " your maker is ", this.marker);
-//     }
-// }
+const dialog = document.querySelector("dialog");
+const newBookButton = document.querySelector("#newBook");
+const closeButton = document.querySelector("#closeBook");
+const uploadBook = document.querySelector("#uploadBook");
+const form = document.querySelector("form");
+const outputBox = document.querySelector("output");
 
-// const player = new Player("steve", "x");
-// console.log(player.name);
-// console.log(player.welcomeMessage())
+uploadBook.addEventListener("click", (event) => {
+    event.preventDefault();
+    dialog.close(form.value);
+})
 
-// const player2 = new Player("alex", "0");
+newBookButton.addEventListener("click", () =>{
+    dialog.showModal();
+})
 
-// console.log(player2.welcomeMessage());
+closeButton.addEventListener("click", () =>{
+    dialog.close();
+})
 
-// function Book(title, author, pages, read) {
-//     this.title = title;
-//     this.author = author;
-//     this.pages = pages;
-//     this.read = read;
-//     this.info = () => {
-//         return this.title + " by " + this.author + ", " + this.pages + ", " + this.read
-//     }
-// }
+dialog.addEventListener("close", (e) => {
+    outputBox.value = dialog.returnValue = `Author:${dialog.returnValue} `;
+})
 
-// const book = new Book("House of Leaves", "Mark z. Danielewski", "500", "read");
-// console.log(book.info());
 
-// console.log(player.valueOf());
+const myLibrary = [];
 
-function Person(name) {
-    this.name = name;
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.info = () => {
+        return this.title + " by " + this.author + ", " + this.pages + ", " + this.read
+    }
 }
 
-Person.prototype.sayName = function() {
-    console.log(`Hello, I'm ${this.name}!`)
+function createaNewBook(params) {
+    const book = new Book(params);
+    return book;
 }
 
-function Player(name, marker) {
-    this.name = name; 
-    this.marker = marker;
+function addBookToLibrary(book) {
+    return myLibrary.push(book);
 }
 
-Player.prototype.getMarker = function() {
-    console.log(`My marker is '${this.marker}'`)
+function displayLibrary() {
+    myLibrary.forEach(book => {
+        outputBox.textContent += book.info() + " | ";
+    });
 }
 
-console.log(Object.getPrototypeOf(Player.prototype));
+const dune = new Book("Dune", "Frank Herber", 500, "Yes");
+const rayuela = new Book("Rayuela", "Julio Cortazar", 600,"Yes");
 
-console.log(Object.setPrototypeOf(Player.prototype, Person.prototype));
-console.log(Object.getPrototypeOf(Player.prototype));
-
-const player1 = new Player('steve', 'x');
-const player2 = new Player('Alex', 'o');
-
-player1.sayName(); // Hello, I'm steve!
-player2.sayName(); // Hello, I'm also steve!
-
-player1.getMarker(); // My marker is 'X'
-player2.getMarker(); // My marker is 'O'
+addBookToLibrary(dune);
+addBookToLibrary(rayuela);
+displayLibrary();
