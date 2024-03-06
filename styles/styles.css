@@ -1,0 +1,19 @@
+.bookContainer {
+    display:flex;
+}
+
+.bookCard {
+    outline: 2px solid black;
+    margin: 5px;
+    width: 25vw;
+}
+
+.bookIndex {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+    border: 2px solid aquamarine;
+    border-radius: 10px;
+    width: 20px;
+}
