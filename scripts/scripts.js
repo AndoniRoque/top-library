@@ -1,5 +1,5 @@
-const dune = new Book(0, "Dune", "Frank Herbert", 500, "Yes");
-const rayuela = new Book(1, "Rayuela", "Julio Cortazar", 600,"Yes");
+const dune = new Book(0, "Dune", "Frank Herbert", 500, true);
+const rayuela = new Book(1, "Rayuela", "Julio Cortazar", 600, true);
 
 const dialog = document.querySelector("dialog");
 const newBookButton = document.querySelector("#newBook");
@@ -9,6 +9,10 @@ const form = document.querySelector("form");
 const outputBox = document.querySelector("output");
 const showLibrary = document.querySelector("#showLibrary");
 const myLibrary = [];
+
+myLibrary.push(dune);
+myLibrary.push(rayuela);
+
 
 function Book(id, title, author, pages, read) {
     this.id = id;
@@ -32,10 +36,22 @@ uploadBook.addEventListener("click", (event) => {
     const pages = document.querySelector("#pages").value;
     const read = document.querySelector("#read").checked;
     const id = createId();
-    const book = new Book(id, title, author, pages, read ? "yes" : "no");
-    addBookToLibrary(book);
-    
-    dialog.close(book.info());
+    var found = false;
+
+    myLibrary.forEach(book => {
+        if(title == book.title && author == book.author) {
+            found = true;
+        }
+    });
+
+    if(found) {
+        alert("Book already in library.");
+    } else {
+        const newBook = new Book(id, title, author, pages, read);
+        addBookToLibrary(newBook);
+    }
+
+    dialog.close();
 })
 
 console.log(myLibrary);
@@ -53,7 +69,8 @@ function createId() {
 }
 
 function addBookToLibrary(book) {
-    return myLibrary.push(book);
+    myLibrary.push(book);
+    displayLibrary();
 }
 
 function displayLibrary() {
@@ -61,13 +78,28 @@ function displayLibrary() {
     bookContainer.className = "bookContainer";
     outputBox.textContent = "";
 
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
         const bookCard = document.createElement('div');
         const titleCard = document.createElement('h3');
         const authorCard = document.createElement('h6');
         const readCard = document.createElement('div');
         const bookNro = document.createElement('div');
         const deleteBook = document.createElement('button');
+        const readCheckbox = document.createElement('input');
+        const textRead = document.createElement('div');
+        readCheckbox.type = 'checkbox';
+        readCheckbox.id = "textRead" + index;
+
+        readCheckbox.addEventListener('change', () => {
+            readCheckbox.checked ? textRead.textContent = "read" : textRead.textContent = "not read";
+        })
+
+        readCheckbox.checked = book.read;
+        book.read ? textRead.textContent = 'read' : textRead.textContent = 'not read';
+
+        readCard.appendChild(readCheckbox);
+        readCard.appendChild(textRead);
+
 
         bookCard.className = "bookCard";
         bookNro.className = "bookIndex";
@@ -76,14 +108,12 @@ function displayLibrary() {
         bookNro.textContent = book.id;
         titleCard.textContent = book.title;
         authorCard.textContent = book.author;
-        readCard.textContent = book.read;
-
 
         deleteBook.addEventListener('click', () => {
-            console.log(book.id);
-            myLibrary.splice(book.id, 1);
+            console.log(index);
+            myLibrary.splice(index, 1);
+            displayLibrary();
         })
-        
         
         bookCard.appendChild(bookNro);
         bookCard.appendChild(titleCard);
@@ -96,6 +126,3 @@ function displayLibrary() {
         outputBox.appendChild(bookContainer);
     });
 }
-
-addBookToLibrary(dune);
-addBookToLibrary(rayuela);
