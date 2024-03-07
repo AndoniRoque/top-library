@@ -104,7 +104,7 @@ function displayLibrary() {
         bookCard.className = "bookCard";
         bookNro.className = "bookIndex";
 
-        deleteBook.textContent = "X";
+        deleteBook.textContent = "Remeove Book";
         bookNro.textContent = index;
         titleCard.textContent = book.title;
         authorCard.textContent = book.author;
@@ -126,3 +126,4 @@ function displayLibrary() {
         outputBox.appendChild(bookContainer);
     });
 }
+

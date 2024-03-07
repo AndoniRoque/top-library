@@ -1,19 +1,70 @@
+:root {
+    --mint-cream: #F0F7EE;
+    --columbia-blue: #C4D7F2;
+    --non-photo-blue: #AFDEDC;
+    --ash-gray: #91A8A4;
+    --dim-gray: #776871;
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--mint-cream);
+    color: darkslategrey;
+}
+
 .bookContainer {
     display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .bookCard {
-    outline: 2px solid black;
-    margin: 5px;
-    width: 25vw;
+    border: 5px solid var(--dim-gray);
+    border-radius: 10px;
+    margin: 10px;
+    width: 15vw;
+    background-color: var(--columbia-blue);
+    display: flexs;
+    align-items: center;
+    justify-content: center;
+}
+
+h3, h6{
+    display:flex;
+    justify-content: end;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.bookCard > div > div {
+    display: inline;
+}
+
+.bookCard > div > input{
+    display: inline;
+}
+
+
+.bookCard > button {
+    width: 100%;
+    outline: none;
+    background-color: #91A8A4;
+    border: none;
+}
+
+.bookCard > button:hover{ 
+    cursor: pointer;
 }
 
 .bookIndex {
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color: aquamarine;
-    border: 2px solid aquamarine;
+    background-color: var(--non-photo-blue);
+    border: 2px solid var(--non-photo-blue);
     border-radius: 10px;
     width: 20px;
 }
+
