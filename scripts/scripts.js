@@ -105,7 +105,7 @@ function displayLibrary() {
         bookNro.className = "bookIndex";
 
         deleteBook.textContent = "X";
-        bookNro.textContent = book.id;
+        bookNro.textContent = index;
         titleCard.textContent = book.title;
         authorCard.textContent = book.author;
 
