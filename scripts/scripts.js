@@ -8,7 +8,7 @@ const uploadBook = document.querySelector("#uploadBook");
 const form = document.querySelector("form");
 const outputBox = document.querySelector("output");
 const showLibrary = document.querySelector("#showLibrary");
-const info = document.querySelector("#info");
+const info = document.querySelector(".info");
 const infoModal = document.querySelector(".information");
 const myLibrary = [];
 let shown = false;
@@ -33,13 +33,19 @@ newBookButton.addEventListener("click", () =>{
     dialog.showModal();
 })
 
+info.addEventListener('click', () => {
+    infoModal.showModal();
+})
+
 uploadBook.addEventListener("click", (event) => {
     event.preventDefault();
+
     const title = document.querySelector("#name").value;
     const author = document.querySelector("#author").value;
     const pages = document.querySelector("#pages").value;
     const read = document.querySelector("#read").checked;
     const id = createId();
+
     var found = false;
 
     myLibrary.forEach(book => {
@@ -80,10 +86,17 @@ function createId() {
 }
 
 function addBookToLibrary(book) {
-
     myLibrary.push(book);
     dialog.style.display = "none";
-    displayLibrary();
+       if(shown){
+        showLibrary.textContent = "Show Library";
+        outputBox.textContent = "";
+        shown = false;
+    } else {
+        showLibrary.textContent = "Hide Library";
+        shown = true;
+        displayLibrary(myLibrary);
+    }
 }
 
 function displayLibrary() {

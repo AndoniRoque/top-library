@@ -179,14 +179,16 @@ h3, h6{
     border: 5px solid var(--dim-gray);
     border-radius: 25px;
     scale: 1.5;
-    width: 2%;
+    width: 1.9%;
     margin-left: 10px;
+    color: var(--non-photo-blue);
 }
 
 .info:hover {
     cursor: pointer;
     background-color: var(--ash-gray);
     border: 5px solid var(--ash-gray);
+    color: var(--dim-gray);
 }
 
 .info:active{ 
