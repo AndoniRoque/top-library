@@ -10,33 +10,51 @@
 
 </head>
 <body>
+    <nav>
+        <h1>Top Library</h1>
+    </nav>
+
     <div id="container">
-        <dialog>
-            <button id="closeBook">x</button>
+        <div class="buttons">
+            <button id="newBook">Add New Book</button>
+
+            <button id="showLibrary">Show Library</button>
+        </div>
+
+        <dialog class="newBookModal">
+            <div>
+                <button id="closeBook">x</button>
+            </div>
             <form>
                 <label for="name">Name:</label>
-                <input type="text" id="name">
+                <input type="text" id="name" name="name" placeholder="Dune" required>
 
                 <label for="author">Author:</label>
-                <input type="text" id="author">
+                <input type="text" id="author" name="author" placeholder="Frank Herbert" required>
 
                 <label for="pages">Pages:</label>
-                <input type="number" id="pages">
+                <input type="number" id="pages" min="0" name="pages" placeholder="600" required>
 
                 <label for="read">Read:</label>
-                <input type="checkbox" id="read">
+                <input type="checkbox" id="read" name="read">
 
                 <button id="uploadBook" type="submit">+</button>
             </form>
         </dialog>
 
-        <button id="newBook">Add New Book</button>
+        <div class="library">
+            <output>
+                <!-- Show library here -->
+            </output>
+        </div>
 
-        <button id="showLibrary">Show Library</button>
-        
-        <output>
-
-        </output>
     </div>   
+    <div class="moreInfo">
+        <button class="info" alt="contact info">+</button>
+    </div>
+
+    <dialog class="information">
+        ojdawoiejañoe
+    </dialog>
 </body>
 </html>

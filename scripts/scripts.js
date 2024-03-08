@@ -8,11 +8,13 @@ const uploadBook = document.querySelector("#uploadBook");
 const form = document.querySelector("form");
 const outputBox = document.querySelector("output");
 const showLibrary = document.querySelector("#showLibrary");
+const info = document.querySelector("#info");
+const infoModal = document.querySelector(".information");
 const myLibrary = [];
+let shown = false;
 
 myLibrary.push(dune);
 myLibrary.push(rayuela);
-
 
 function Book(id, title, author, pages, read) {
     this.id = id;
@@ -25,7 +27,9 @@ function Book(id, title, author, pages, read) {
     }
 }
 
+
 newBookButton.addEventListener("click", () =>{
+    dialog.style.display = "flex";
     dialog.showModal();
 })
 
@@ -54,14 +58,21 @@ uploadBook.addEventListener("click", (event) => {
     dialog.close();
 })
 
-console.log(myLibrary);
-
 closeButton.addEventListener("click", () =>{
+    dialog.style.display = "none";
     dialog.close();
 })
 
 showLibrary.addEventListener('click', () => {
-    displayLibrary(myLibrary);
+    if(shown){
+        showLibrary.textContent = "Show Library";
+        outputBox.textContent = "";
+        shown = false;
+    } else {
+        showLibrary.textContent = "Hide Library";
+        shown = true;
+        displayLibrary(myLibrary);
+    }
 })
 
 function createId() {
@@ -69,7 +80,9 @@ function createId() {
 }
 
 function addBookToLibrary(book) {
+
     myLibrary.push(book);
+    dialog.style.display = "none";
     displayLibrary();
 }
 

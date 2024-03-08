@@ -11,6 +11,87 @@ html, body {
     padding: 0px;
     background-color: var(--mint-cream);
     color: darkslategrey;
+    background-image: radial-gradient(var(--non-photo-blue) 1px, transparent 1px);
+    background-size: 37px 37px;
+    width: 100vw;
+    height: 100vh;
+}
+
+nav {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--ash-gray);
+    border-bottom: 10px solid var(--dim-gray);
+}
+
+#container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 87vh;
+    flex-direction: column;
+}
+
+.buttons{
+    display: flex;
+}
+
+#newBook, #showLibrary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--ash-gray);
+    width: 10vw;
+    height: 10vh;
+    border: none;
+    border-radius: 20px;
+    margin: 20px;
+    color: darkslategrey;
+    font-weight: bold;
+}
+
+#newBook:hover, #showLibrary:hover {
+    cursor: pointer;
+    border: 5px solid var(--dim-gray);
+    scale: 1.02;
+    font-size: medium;
+}
+
+
+.newBookModal {
+    display: none;
+    flex-direction: column;
+    width: 50vw;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--columbia-blue);
+    background-image: radial-gradient(var(--dim-gray) 1px, transparent 1px);
+    background-size: 37px 37px;
+    border: 3px solid var(--dim-gray);
+    border-radius: 20px;
+}
+
+.newBookModal > div {
+    display:flex;
+    width: 87%;
+    justify-content: end;
+}
+
+form{
+    display: flex;
+    height: 60%;
+    width: 60%;
+    flex-direction: column;
+}
+
+form > input {
+    border: none;
+    border-radius: 5px;
+    height: inherit;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .bookContainer {
@@ -67,4 +148,52 @@ h3, h6{
     border-radius: 10px;
     width: 20px;
 }
+
+#closeBook {
+    border: none;
+    color: var(--dim-gray);
+    font-weight: 900;
+    font-size: larger;
+    background-color: var(--columbia-blue);
+}
+
+.library > output > .bookContainer{
+    display:flex;
+    max-width: 70vw;
+    flex-wrap: wrap;
+}
+
+.moreInfo {
+    display: flex;
+    justify-content: end;
+    width: 99vw;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    font-weight: bolder;
+    background-color: var(--dim-gray);
+    border: 5px solid var(--dim-gray);
+    border-radius: 25px;
+    scale: 1.5;
+    width: 2%;
+    margin-left: 10px;
+}
+
+.info:hover {
+    cursor: pointer;
+    background-color: var(--ash-gray);
+    border: 5px solid var(--ash-gray);
+}
+
+.info:active{ 
+    background-color: var(--ash-gray);
+    border: 5px solid var(--ash-gray);
+    scale: 1.3;
+}
+
+
 
