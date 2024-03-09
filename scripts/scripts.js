@@ -38,13 +38,18 @@ info.addEventListener('click', () => {
 })
 
 uploadBook.addEventListener("click", (event) => {
-    event.preventDefault();
+    event.preventDefault();   
 
     const title = document.querySelector("#name").value;
     const author = document.querySelector("#author").value;
     const pages = document.querySelector("#pages").value;
     const read = document.querySelector("#read").checked;
     const id = createId();
+
+    if (title.trim() === '' || author.trim() === '' || pages.trim() === ''){
+        alert("Please fill out all the fields before uploading");
+        return;
+    }
 
     var found = false;
 
