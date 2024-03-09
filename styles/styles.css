@@ -242,13 +242,38 @@ h3, h6{
 
 .information {
     position: fixed;
-    top:60%;
+    top:70%;
     left: 80%;
     border: none;
     outline: none;
     width: 10vw;
     font-size: medium;
+    display: none;
+    flex-direction: column;
+    background-color: var(--columbia-blue);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
+.closeFooter {
+    display:flex;
+    justify-content: end;
+}
+
+.closeFooter button {
+    border:none;
+    background-color: var(--columbia-blue);
+}
+
+.closeFooter button:hover {
+    scale:1.1;
+}
+
+.infoIcons {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-around;
+}
 
 

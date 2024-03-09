@@ -10,8 +10,10 @@ const outputBox = document.querySelector("output");
 const showLibrary = document.querySelector("#showLibrary");
 const info = document.querySelector(".info");
 const infoModal = document.querySelector(".information");
+const closeFooter = document.querySelector("#closeFooter");
 const myLibrary = [];
 let shown = false;
+let showModal = false;
 
 myLibrary.push(dune);
 myLibrary.push(rayuela);
@@ -34,6 +36,7 @@ newBookButton.addEventListener("click", () =>{
 })
 
 info.addEventListener('click', () => {
+    infoModal.style.display = "flex";
     infoModal.showModal();
 })
 
@@ -158,3 +161,7 @@ function displayLibrary() {
     });
 }
 
+closeFooter.addEventListener("click", () => {
+    infoModal.style.display = "none";
+    infoModal.close();
+})
