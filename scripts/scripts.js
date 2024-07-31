@@ -11,6 +11,8 @@ const showLibrary = document.querySelector("#showLibrary");
 const info = document.querySelector(".info");
 const infoModal = document.querySelector(".information");
 const closeFooter = document.querySelector("#closeFooter");
+const titleError = document.querySelector("#title + span.error");
+const titleInput = document.querySelector("#title");
 const myLibrary = [];
 let shown = false;
 let showModal = false;
@@ -29,7 +31,6 @@ function Book(id, title, author, pages, read) {
     }
 }
 
-
 newBookButton.addEventListener("click", () => {
     dialog.style.display = "flex";
     dialog.showModal();
@@ -43,14 +44,18 @@ info.addEventListener('click', () => {
 uploadBook.addEventListener("click", (event) => {
     event.preventDefault();   
 
-    const title = document.querySelector("#name").value;
-    const author = document.querySelector("#author").value;
-    const pages = document.querySelector("#pages").value;
+    const title = document.querySelector("#name");
+    const author = document.querySelector("#author");
+    const pages = document.querySelector("#pages");
     const read = document.querySelector("#read").checked;
     const id = createId();
 
-    if (title.trim() === '' || author.trim() === '' || pages.trim() === ''){
-        alert("Please fill out all the fields before uploading");
+    if (title.value.trim() === '' || author.value.trim() === '' || pages.value.trim() === ''){
+        if(title.validity.valid){ 
+            titleError.setCustomValidity("Por favor ingrese el titulo de un libro.");
+            titleError.textContent = "";
+            title.className = "error";
+        }
         return;
     }
 
