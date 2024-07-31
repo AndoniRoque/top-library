@@ -28,7 +28,7 @@ function Book(id, title, author, pages, read) {
 }
 
 
-newBookButton.addEventListener("click", () =>{
+newBookButton.addEventListener("click", () => {
     dialog.style.display = "flex";
     dialog.showModal();
 })
@@ -49,12 +49,12 @@ uploadBook.addEventListener("click", (event) => {
     var found = false;
 
     myLibrary.forEach(book => {
-        if(title == book.title && author == book.author) {
+        if (title == book.title && author == book.author) {
             found = true;
         }
     });
 
-    if(found) {
+    if (found) {
         alert("Book already in library.");
     } else {
         const newBook = new Book(id, title, author, pages, read);
@@ -64,13 +64,13 @@ uploadBook.addEventListener("click", (event) => {
     dialog.close();
 })
 
-closeButton.addEventListener("click", () =>{
+closeButton.addEventListener("click", () => {
     dialog.style.display = "none";
     dialog.close();
 })
 
 showLibrary.addEventListener('click', () => {
-    if(shown){
+    if (shown) {
         showLibrary.textContent = "Show Library";
         outputBox.textContent = "";
         shown = false;
@@ -82,13 +82,13 @@ showLibrary.addEventListener('click', () => {
 })
 
 function createId() {
-    return myLibrary.length == 0 ? 0 : myLibrary.length + 1; 
+    return myLibrary.length == 0 ? 0 : myLibrary.length + 1;
 }
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
     dialog.style.display = "none";
-       if(shown){
+    if (shown) {
         showLibrary.textContent = "Show Library";
         outputBox.textContent = "";
         shown = false;
@@ -140,15 +140,15 @@ function displayLibrary() {
             myLibrary.splice(index, 1);
             displayLibrary();
         })
-        
+
         bookCard.appendChild(bookNro);
         bookCard.appendChild(titleCard);
         bookCard.appendChild(authorCard);
         bookCard.appendChild(readCard);
         bookCard.appendChild(deleteBook);
-        
+
         bookContainer.appendChild(bookCard);
-        
+
         outputBox.appendChild(bookContainer);
     });
 }
