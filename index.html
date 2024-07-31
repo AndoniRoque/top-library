@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="shortcut icon" href="#" />
     <script src="scripts/scripts.js" defer></script>
 
@@ -35,8 +36,9 @@
                 <label for="pages">Pages:</label>
                 <input type="number" id="pages" min="0" name="pages" placeholder="600" required>
 
-                <label for="read">Read:</label>
-                <input type="checkbox" id="read" name="read">
+                <label id="labelRead" for="read">Read:
+                    <input type="checkbox" id="read" name="read">
+                </label>
 
                 <button id="uploadBook" type="submit">+</button>
             </form>
@@ -54,7 +56,16 @@
     </div>
 
     <dialog class="information">
-        <h1>Holas</h1>
+        <div class="closeFooter">
+            <button id="closeFooter"> x </button>
+        </div>
+        <div class="infoName">
+            <h3>Andoni Roque</h3>
+        </div>
+        <div class="infoIcons"> 
+            <a href="www.linkedin.com/in/andoni-roque" target="_blank"> <i class="fab fa-linkedin"></i></i></a>
+            <a href="https://github.com/AndoniRoque" target="_blank"> <i class="fab fa-github"></i></a>
+        </div>
     </dialog>
 </body>
 </html>
